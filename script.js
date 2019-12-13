@@ -1,14 +1,15 @@
 new Vue({
-  el: '#app',
-  data () {
-    return {
-      info: null,
-	  notificationShade: 'true'
-    }
-  },
-	  methods: {
-		 toogle () {
-			this.spanVisible = !this.notificationShade
+	el: '#app',
+	data() {
+		return {
+			info: null,
+			isOpen: 'true'
 		}
-    }
+	},
+	methods: {
+		toggle: function () {
+			this.isOpen = !this.isOpen
+		}
+
+	}
 })

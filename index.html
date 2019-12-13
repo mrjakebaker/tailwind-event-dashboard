@@ -1,58 +1,74 @@
 <html>
+
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.2/tailwind.min.css">
 	<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 	<div id="app" class="md:flex md:flex-wrap antialiased h-screen overflow-y-none">
-		<header class="bg-white w-full p-4 z-10 shadow flex flex-wrap items-center content-between">
+		<header class="bg-white w-full p-4 z-50 shadow flex flex-wrap items-center content-between relative">
+
 			<!-- App Icon-->
 			<img src="https://uilogos.co/img/logomark/atica.png" class="w-12 mr-12 h-auto" alt="">
-			<!-- search -->
+
+			<!-- search bar -->
 			<div class="flex-grow">
 				<div class="relative w-64">
 					<span class="absolute pr-3 inset-y-0 right-0 flex items-center">
 						<svg class="h-6 w-6 text-gray-600" viewBox="0 0 24 24" fill="none">
-							<path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+							<path stroke="currentColor" stroke-width="2" stroke-linecap="round"
+								d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
 						</svg>
 					</span>
-					<input class="block w-full rounded-full  bg-gray-200 pr-10 pl-4 py-2 text-gray-900 text-sm placeholder-gray-600" placeholder="Search for something">
-
+					<input
+						class="block w-full rounded-full  bg-gray-200 pr-10 pl-4 py-2 text-gray-900 text-sm placeholder-gray-600"
+						placeholder="Search for something">
 				</div>
-
 			</div>
+
 			<!-- new action -->
 			<div class="mr-10">
-				<button class="block flex items-center text-sm font-medium text-gray-600 py-2 px-4 shadow  rounded-full bg-indigo-700 text-indigo-100">
+				<button
+					class="block flex items-center text-sm font-medium py-2 px-4 shadow  rounded-full bg-indigo-700 text-indigo-100 hover:bg-indigo-900 hover:shadow-md hover:-mt-1">
 					<span class="mx-1">Create new</span>
-					<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"  viewBox="0 0 16 16">
-						<g><polygon fill="currentColor" points="8,11.4 2.6,6 4,4.6 8,8.6 12,4.6 13.4,6 "></polygon></g>
-
+					<svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 16 16">
+						<g>
+							<polygon fill="currentColor" points="8,11.4 2.6,6 4,4.6 8,8.6 12,4.6 13.4,6 "></polygon>
+						</g>
 					</svg>
 				</button>
 			</div>
 
-			<!-- bell -->
+			<!-- notification bell -->
 			<div class=" block mr-10">
-				<button  v-on:click="toogle" class="focus-child">
+				<button @click="toggle()" class="p-2 px-4 rounded hover:shadow-md">
 					<div class="relative ">
-						<span class="absolute bg-red-400 flex h-4 items-center justify-center right-0 rounded-full text-center top-0 w-4 text-white -mt-2 -mr-2 text-sm">
+						<span
+							class="absolute bg-red-400 flex h-4 items-center justify-center right-0 rounded-full text-center top-0 w-4 text-white -mt-2 -mr-2 text-sm">
 							4
 						</span>
 						<svg class="h-6 w-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-							<path stroke="currentColor" d="M468 392h-20c-10.384 0-18.709-3.609-24.745-10.728-7.363-8.684-11.255-22.386-11.255-39.626V204c0-78.818-59.543-144.777-136-154.699V0h-40v49.301C159.543 59.223 100 125.181 100 204v144c0 14.175-3.734 25.775-10.799 33.546C82.984 388.385 74.27 392 64 392H44v56h161.413A51.888 51.888 0 00204 460c0 28.673 23.327 52 52 52s52-23.327 52-52c0-4.131-.499-8.145-1.413-12H468v-56zm-212 80c-6.617 0-12-5.383-12-12s5.383-12 12-12 12 5.383 12 12-5.383 12-12 12zm-136.792-64C132.813 392.784 140 372.052 140 348V204c0-63.067 51.263-115.072 114.302-115.987h3.396C320.737 88.928 372 140.933 372 204v137.646c0 26.84 7.174 49.488 20.745 65.494.245.289.492.576.741.86H119.208z"></path></svg>
-						</div>
-					</button>
-				</div>
-				<!-- Logged in avatar -->
-				<img class="rounded-full h-12 w-12" src="https://randomuser.me/api/portraits/men/17.jpg" alt="">
-			</header>
+							<path stroke="currentColor"
+								d="M468 392h-20c-10.384 0-18.709-3.609-24.745-10.728-7.363-8.684-11.255-22.386-11.255-39.626V204c0-78.818-59.543-144.777-136-154.699V0h-40v49.301C159.543 59.223 100 125.181 100 204v144c0 14.175-3.734 25.775-10.799 33.546C82.984 388.385 74.27 392 64 392H44v56h161.413A51.888 51.888 0 00204 460c0 28.673 23.327 52 52 52s52-23.327 52-52c0-4.131-.499-8.145-1.413-12H468v-56zm-212 80c-6.617 0-12-5.383-12-12s5.383-12 12-12 12 5.383 12 12-5.383 12-12 12zm-136.792-64C132.813 392.784 140 372.052 140 348V204c0-63.067 51.263-115.072 114.302-115.987h3.396C320.737 88.928 372 140.933 372 204v137.646c0 26.84 7.174 49.488 20.745 65.494.245.289.492.576.741.86H119.208z">
+							</path>
+						</svg>
+					</div>
+				</button>
+			</div>
+			<!-- Logged in avatar -->
+			<img class="rounded-full h-12 w-12" src="https://randomuser.me/api/portraits/men/17.jpg" alt="">
+		</header>
+		
+		<!-- page wrapper -->
+		<div class="relative w-full antialiased h-screen overflow-y-none / md:flex md:flex-wrap ">
 			<!-- Sidebar Menu -->
 			<aside class="w-full lg:w-24 p-2 px-4">
-				<ul class="h-full flex lg:flex-col items-center justify-center">
+				<ul class="flex items-center justify-center / lg:h-full / lg:flex-col">
 					<!-- button-->
 					<li class="mb-2">
 						<button class="p-2 px-4 rounded hover:bg-green-200 shadow-md">
@@ -96,11 +112,15 @@
 						<div class="w-full my-6 / flex  items-center">
 							<h1 class="text-xl font-semibold flex-auto text-black">Upcoming Event</h1>
 							<div class="flex flex-col align-right items-end  md:p-0">
-								<a class="text-xs inline-block py-1 px-4 border-2 rounded-full border-gray-400 text-black / md:text-sm self-end hover:bg-white hover:text-gray-900" href="">All Events <span class="text-gray-600">→</span></a>
+								<button
+									class="text-xs inline-block py-1 px-4 border-2 rounded-full border-gray-400 text-black / md:text-sm self-end hover:bg-white hover:text-gray-900"
+									href="">All Events <span class="text-gray-600">→</span>
+								</button>
 							</div>
 						</div>
 
-						<section class="p-4 pt-0 sm:p-8 sm:pt-0 rounded-lg bg-indigo-600 md:flex md:flex-wrap items-center shadow-lg">
+						<section
+							class="p-4 pt-0 sm:p-8 sm:pt-0 rounded-lg bg-indigo-600 md:flex md:flex-wrap items-center shadow-lg">
 							<!-- Event Title -->
 							<div class="pt-4 / md:flex / lg:pt-8  / xl:w-8/12">
 								<div class="lg:flex lg:items-center">
@@ -108,7 +128,8 @@
 										<span class="text-xs xl:text-base">APR</span>
 										<span class="text-xs xl:text-3xl leading-none">21</span>
 									</div>
-									<h2 class="text-2xl text-white font-semibold / lg:font-normal md:text-3xl">Ultimate Championship 2019</h2>
+									<h2 class="text-2xl text-white font-semibold / lg:font-normal md:text-3xl">Ultimate
+										Championship 2019</h2>
 								</div>
 							</div>
 							<!-- Secondary information -->
@@ -123,7 +144,8 @@
 								</div>
 							</div>
 							<!-- Info box -->
-							<div class="w-full pt-4 flex flex-wrap items-center content-around / sm:pt-8 / md:content-between md:flex-auto  md:flex-wrap / xl:w-8/12">
+							<div
+								class="w-full pt-4 flex flex-wrap items-center content-around / sm:pt-8 / md:content-between md:flex-auto  md:flex-wrap / xl:w-8/12">
 								<div class="w-1/2 md:flex-1">
 									<div class="text-gray-300 text-xs md:text-sm">Selling starts</div>
 									<div class="text-lg md:text-xl text-teal-300 font-semibold">Started</div>
@@ -152,34 +174,35 @@
 								</div>
 							</div>
 							<!-- Actions -->
-							<div class="mt-4 pt-6 / md:mt-12 md:flex md:flex-col md:align-right md:items-end xl:w-4/12 md:p-0">
-								<a class="inline-block py-1 px-6  border rounded-full border-gray-300 text-gray-200 md:self-end hover:bg-white hover:text-gray-900" href="">Edit Event</a>
+							<div
+								class="mt-4 pt-6 / md:mt-12 md:flex md:flex-col md:align-right md:items-end xl:w-4/12 md:p-0">
+								<button
+									class="inline-block py-1 px-6  border rounded-full border-gray-300 text-gray-200 md:self-end hover:bg-white hover:text-gray-900"
+									href="">Edit Event</button>
 							</div>
 						</section>
-
+						<!-- Split  -->
 						<div class="md:flex mt-4 ">
+							<!-- Radial graphs-->
 							<section class="h-full md:w-1/2 md:mr-4 rounded-lg">
-								<h2 class="my-6 text-gray-500 text-xs tracking-wider font-bold uppercase ">Tickets Sold</h2>
+								<h2 class="my-6 text-gray-500 text-xs tracking-wider font-bold uppercase ">Tickets Sold
+								</h2>
 								<section class="bg-white w-full rounded-lg p-4 / sm:p-8">
 									<div class="flex flex-wrap">
 										<div class="w-1/3">
 											<div class="relative">
-												<div class="absolute flex h-full items-center justify-center text-center w-full">
+												<div
+													class="absolute flex h-full items-center justify-center text-center w-full">
 													<span class="text-base text-gray-900">43</span>
 													<span class="pl-1 text-sm text-gray-600">/80</span>
 												</div>
 												<svg viewBox="0 0 36 36" class="circular-chart red">
-													<path class="circle-bg"
-													d="M18 2.0845
+													<path class="circle-bg" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
-													<path class="circle"
-													stroke-dasharray="53, 100"
-													d="M18 2.0845
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
+													<path class="circle" stroke-dasharray="53, 100" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
 
 												</svg>
 											</div>
@@ -191,22 +214,18 @@
 										<!-- -->
 										<div class="w-1/3">
 											<div class="relative">
-												<div class="absolute flex h-full items-center justify-center text-center w-full">
+												<div
+													class="absolute flex h-full items-center justify-center text-center w-full">
 													<span class="text-base text-gray-900">59</span>
 													<span class="pl-1 text-sm text-gray-600">/73</span>
 												</div>
 												<svg viewBox="0 0 36 36" class="circular-chart orange">
-													<path class="circle-bg"
-													d="M18 2.0845
+													<path class="circle-bg" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
-													<path class="circle"
-													stroke-dasharray="80, 100"
-													d="M18 2.0845
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
+													<path class="circle" stroke-dasharray="80, 100" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
 
 												</svg>
 											</div>
@@ -218,22 +237,18 @@
 										<!-- -->
 										<div class="w-1/3">
 											<div class="relative">
-												<div class="absolute flex h-full items-center justify-center text-center w-full">
+												<div
+													class="absolute flex h-full items-center justify-center text-center w-full">
 													<span class="text-base text-gray-900">70</span>
 													<span class="pl-1 text-sm text-gray-600">/112</span>
 												</div>
 												<svg viewBox="0 0 36 36" class="circular-chart indigo">
-													<path class="circle-bg"
-													d="M18 2.0845
+													<path class="circle-bg" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
-													<path class="circle"
-													stroke-dasharray="62.5, 100"
-													d="M18 2.0845
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
+													<path class="circle" stroke-dasharray="62.5, 100" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
 
 												</svg>
 											</div>
@@ -246,22 +261,18 @@
 										<!-- -->
 										<div class="w-1/3">
 											<div class="relative">
-												<div class="absolute flex h-full items-center justify-center text-center w-full">
+												<div
+													class="absolute flex h-full items-center justify-center text-center w-full">
 													<span class="text-base text-gray-900">70</span>
 													<span class="pl-1 text-sm text-gray-600">/112</span>
 												</div>
 												<svg viewBox="0 0 36 36" class="circular-chart indigo">
-													<path class="circle-bg"
-													d="M18 2.0845
+													<path class="circle-bg" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
-													<path class="circle"
-													stroke-dasharray="62.5, 100"
-													d="M18 2.0845
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
+													<path class="circle" stroke-dasharray="62.5, 100" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
 
 												</svg>
 											</div>
@@ -273,22 +284,18 @@
 										<!-- -->
 										<div class="w-1/3">
 											<div class="relative">
-												<div class="absolute flex h-full items-center justify-center text-center w-full">
+												<div
+													class="absolute flex h-full items-center justify-center text-center w-full">
 													<span class="text-base text-gray-900">70</span>
 													<span class="pl-1 text-sm text-gray-600">/112</span>
 												</div>
 												<svg viewBox="0 0 36 36" class="circular-chart indigo">
-													<path class="circle-bg"
-													d="M18 2.0845
+													<path class="circle-bg" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
-													<path class="circle"
-													stroke-dasharray="62.5, 100"
-													d="M18 2.0845
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
+													<path class="circle" stroke-dasharray="62.5, 100" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
 
 												</svg>
 											</div>
@@ -300,22 +307,18 @@
 										<!-- -->
 										<div class="w-1/3">
 											<div class="relative">
-												<div class="absolute flex h-full items-center justify-center text-center w-full">
+												<div
+													class="absolute flex h-full items-center justify-center text-center w-full">
 													<span class="text-base text-gray-900">70</span>
 													<span class="pl-1 text-sm text-gray-600">/112</span>
 												</div>
 												<svg viewBox="0 0 36 36" class="circular-chart indigo">
-													<path class="circle-bg"
-													d="M18 2.0845
+													<path class="circle-bg" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
-													<path class="circle"
-													stroke-dasharray="62.5, 100"
-													d="M18 2.0845
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
+													<path class="circle" stroke-dasharray="62.5, 100" d="M18 2.0845
 													a 15.9155 15.9155 0 0 1 0 31.831
-													a 15.9155 15.9155 0 0 1 0 -31.831"
-													/>
+													a 15.9155 15.9155 0 0 1 0 -31.831" />
 
 												</svg>
 											</div>
@@ -327,8 +330,11 @@
 									</div>
 								</section>
 							</section>
+							<!-- Progress Graphs -->
 							<section class="h-full md:w-1/2 rounded-lg">
-								<h2 class="my-6 text-gray-500 text-xs tracking-wider font-bold uppercase">Venue Statistics</h2>
+								<h2 class="my-6 text-gray-500 text-xs tracking-wider font-bold uppercase">Venue
+									Statistics
+								</h2>
 								<section class="bg-white w-full rounded-lg p-4 / sm:p-8">
 									<div class="flex pb-4">
 										<span class="text-gray-500 flex-1">Section</span>
@@ -376,7 +382,8 @@
 												<div class="w-full">
 													<!-- progress -->
 													<div class="h-1 flex w-full bg-gray-300 rounded">
-														<div class="flex bg-orange-500 rounded" style="width: 50%"></div>
+														<div class="flex bg-orange-500 rounded" style="width: 50%">
+														</div>
 													</div>
 												</div>
 											</div>
@@ -391,7 +398,8 @@
 												<div class="w-full">
 													<!-- progress -->
 													<div class="h-1 flex w-full bg-gray-300 rounded">
-														<div class="flex bg-orange-500 rounded" style="width: 100%"></div>
+														<div class="flex bg-orange-500 rounded" style="width: 100%">
+														</div>
 													</div>
 												</div>
 											</div>
@@ -406,7 +414,8 @@
 												<div class="w-full">
 													<!-- progress -->
 													<div class="h-1 flex w-full bg-gray-300 rounded">
-														<div class="flex bg-indigo-500 rounded" style="width: 60%"></div>
+														<div class="flex bg-indigo-500 rounded" style="width: 60%">
+														</div>
 													</div>
 												</div>
 											</div>
@@ -421,7 +430,8 @@
 												<div class="w-full">
 													<!-- progress -->
 													<div class="h-1 flex w-full bg-gray-300 rounded">
-														<div class="flex bg-indigo-500 rounded" style="width: 77%"></div>
+														<div class="flex bg-indigo-500 rounded" style="width: 77%">
+														</div>
 													</div>
 												</div>
 											</div>
@@ -441,40 +451,49 @@
 					</section>
 				</div>
 			</main>
-			<aside v-if="notificationShade === 'true'" id="performance" class=" w-full w-12 lg:w-64 p-4 px-8 overflow-y-auto">
+			<!-- Notification Pane -->
+			<aside v-show="isOpen" id="notification-pane" class="z-30 absolute block bg-white w-12 w-full p-4 px-8 overflow-y-auto inset-0 / lg:relative lg:w-64  // lg:block lg:z-auto ">
 				<section id="recent">
 					<h2 class="my-6 text-gray-500 text-xs tracking-wider font-bold uppercase">Recent Activity</h2>
 					<article class="flex flex-row  items-start flex-wrap mb-8">
-						<img class="h-12 rounded-full w-12" src="https://randomuser.me/api/portraits/men/97.jpg" alt="">
+						<img class="pointer-events-none h-12 rounded-full w-12"
+							src="https://randomuser.me/api/portraits/men/97.jpg" alt="">
 						<div class="flex-1 pl-4 text-gray-700 text-sm leading-snug">
-							<span class="font-semibold inline text-gray-800">Tom Ross</span> has bought <span class="font-semibold text-orange-600">3 standard</span> tickets on your event
+							<span class="font-semibold inline text-gray-800">Tom Ross</span> has bought <span
+								class="font-semibold text-orange-600">3 standard</span> tickets on your event
 							<span class="text-xs pt-4 block w-full">3 mins ago</span>
 						</div>
 
 					</article>
 
 					<article class="flex flex-row  items-start flex-wrap mb-8">
-						<img class="h-12 rounded-full w-12" src="https://randomuser.me/api/portraits/women/47.jpg" alt="">
+						<img class="pointer-events-none h-12 rounded-full w-12"
+							src="https://randomuser.me/api/portraits/women/47.jpg" alt="">
 						<div class="flex-1 pl-4 text-gray-700 text-sm leading-snug">
-							<span class="font-semibold inline text-gray-800">Valentina Black</span> has bought <span class="font-semibold text-red-600">1 VIP</span> ticket on your event
+							<span class="font-semibold inline text-gray-800">Valentina Black</span> has bought <span
+								class="font-semibold text-red-600">1 VIP</span> ticket on your event
 							<span class="text-xs pt-4 block w-full">29 mins ago</span>
 						</div>
 
 					</article>
 
 					<article class="flex flex-row  items-start flex-wrap mb-8">
-						<img class="h-12 rounded-full w-12" src="https://randomuser.me/api/portraits/men/99.jpg" alt="">
+						<img class="pointer-events-none h-12 rounded-full w-12"
+							src="https://randomuser.me/api/portraits/men/99.jpg" alt="">
 						<div class="flex-1 pl-4 text-gray-700 text-sm leading-snug">
-							<span class="font-semibold inline text-gray-800">Roger Smith</span> has bought <span class="font-semibold text-indigo-600">5 Economy</span> tickets on your event
+							<span class="font-semibold inline text-gray-800">Roger Smith</span> has bought <span
+								class="font-semibold text-indigo-600">5 Economy</span> tickets on your event
 							<span class="text-xs pt-4 block w-full">11 hours ago</span>
 						</div>
 
 					</article>
 
 					<article class="flex flex-row  items-start flex-wrap mb-8">
-						<img class="h-12 rounded-full w-12" src="https://randomuser.me/api/portraits/women/14.jpg" alt="">
+						<img class="pointer-events-none h-12 rounded-full w-12"
+							src="https://randomuser.me/api/portraits/women/14.jpg" alt="">
 						<div class="flex-1 pl-4 text-gray-700 text-sm leading-snug">
-							<span class="font-semibold inline text-gray-800">Julia Donaldson</span> has bought <span class="font-semibold text-orange-600">1 Standard</span> ticket on your event
+							<span class="font-semibold inline text-gray-800">Julia Donaldson</span> has bought <span
+								class="font-semibold text-orange-600">1 Standard</span> ticket on your event
 							<span class="text-xs pt-4 block w-full">2 days ago</span>
 						</div>
 
@@ -486,10 +505,12 @@
 
 				</section>
 			</aside>
-
 		</div>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
-		<script src="script.js"></script>
-	</body>
-	</html>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>

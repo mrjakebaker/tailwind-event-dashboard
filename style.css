@@ -1,13 +1,17 @@
 body {
-font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .box {
-	border: 1px dotted pink;
+  border: 1px dotted pink;
+}
+
+button {
+  transition: 0.25s all ease-in-out;
 }
 
 .circular-chart {
@@ -47,4 +51,3 @@ font-family: 'Source Sans Pro', sans-serif;
   font-size: 0.25em;
   text-anchor: middle;
 }
-
